@@ -6,34 +6,42 @@ A simple patent submission and approval workflow with RBAC.
 
 ## Stack
 
-- **Backend:** Node.js, Express, Prisma, **SQLite**, JWT, Zod
-- **Frontend:** React, Vite, Tailwind CSS
+- **Backend:** Node.js, Express, Prisma, SQLite, JWT, Zod (`server/`)
+- **Frontend:** React, Vite, Tailwind CSS (`client/`)
+- **Single repo** — one `npm install`, one `npm run dev`
+
+## Project layout
+
+```
+patent-workflow/
+├── server/          # Express API
+├── client/          # React UI
+├── prisma/          # Database schema + seed
+├── package.json     # All dependencies here
+└── .env
+```
 
 ## Quick Start
 
-### Backend
-
 ```bash
-cd backend
-cp .env.example .env   # Windows: copy .env.example .env
+cp .env.example .env          # Windows: copy .env.example .env
 npm install
 npm run db:push
 npm run db:seed
 npm run dev
 ```
 
-Runs on http://localhost:4000
+- **UI:** http://localhost:5173 (proxies `/api` to backend)
+- **API:** http://localhost:4000/api
 
-### Frontend (new terminal)
+### Production (single server)
 
 ```bash
-cd frontend
-cp .env.example .env   # Windows: copy .env.example .env
-npm install
-npm run dev
+npm run build
+npm start
 ```
 
-Runs on http://localhost:5173
+Serves both API and built React app on one port (default 4000).
 
 ## Demo Accounts
 
